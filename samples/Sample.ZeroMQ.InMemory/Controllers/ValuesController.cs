@@ -23,7 +23,7 @@ namespace Sample.ZeroMQ.InMemory.Controllers
             return Ok();
         }
 
-        [CapSubscribe("sample.aws.in-memory",Group ="zeromq")]
+        [CapSubscribe("sample.aws.in-memory")]
         public void SubscribeInMemoryTopic(DateTime value)
         {
             Console.WriteLine("Subscriber output message: " + value);
