@@ -21,7 +21,8 @@ CAP.Extensions 是 CAP的扩展版本库， 提供了针对CAP的两个组件：
    
 
 - DotNetCore.CAP.LiteDB  [![DotNetCore.CAP.LiteDB](https://img.shields.io/nuget/v/DotNetCore.CAP.LiteDB.svg)](https://www.nuget.org/packages/DotNetCore.CAP.LiteDB/)
-![DotNetCore.CAP.LiteDB](docs/cap_litedb.png)
+
+    ![DotNetCore.CAP.LiteDB](docs/cap_litedb.png)
    
    [LiteDB](http://www.litedb.org/)是一个小型的.NET平台开源的NoSQL类型的轻量级文件数据库。特点是小和快，dll文件只有200K大小，而且支持LINQ和命令行操作，数据库是一个单一文件，类似Sqlite。为CAP存储了本地文件的NoSQL存储方式， 示例请参见 Sample.LiteDB.InMemory
    
