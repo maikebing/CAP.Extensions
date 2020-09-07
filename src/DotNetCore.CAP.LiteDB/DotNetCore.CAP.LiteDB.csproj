@@ -11,6 +11,8 @@
     <RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>cap_litedb.png</PackageIcon>
+    <PackageId>DotNetCore.CAP.LiteDB</PackageId>
+    <Product>DotNetCore.CAP.LiteDB</Product>
   </PropertyGroup>
 
   <ItemGroup>
