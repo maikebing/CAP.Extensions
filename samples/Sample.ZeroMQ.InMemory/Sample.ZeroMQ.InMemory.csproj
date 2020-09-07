@@ -3,13 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" Version="3.1.0" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="3.1.0" />
+    <PackageReference Include="DotNetCore.CAP.InMemoryStorage" Version="3.1.0" />
+  </ItemGroup>
    
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.Dashboard\DotNetCore.CAP.Dashboard.csproj" />
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.InMemoryStorage\DotNetCore.CAP.InMemoryStorage.csproj" />
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.RabbitMQ\DotNetCore.CAP.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\src\DotNetCore.CAP.ZeroMQ\DotNetCore.CAP.ZeroMQ.csproj" />
-    <ProjectReference Include="..\..\src\DotNetCore.CAP\DotNetCore.CAP.csproj" />
   </ItemGroup> 
 
 </Project>

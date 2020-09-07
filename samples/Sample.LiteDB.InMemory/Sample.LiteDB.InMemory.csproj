@@ -10,14 +10,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" Version="3.1.0" />
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="3.1.0" />
+    <PackageReference Include="DotNetCore.CAP.InMemoryStorage" Version="3.1.0" />
+    <PackageReference Include="LiteDB" Version="5.0.9" />
     <PackageReference Include="Savorboard.CAP.InMemoryMessageQueue" Version="3.0.0" />
   </ItemGroup>
-   
+
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.Dashboard\DotNetCore.CAP.Dashboard.csproj" />
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.InMemoryStorage\DotNetCore.CAP.InMemoryStorage.csproj" />
     <ProjectReference Include="..\..\src\DotNetCore.CAP.LiteDB\DotNetCore.CAP.LiteDB.csproj" />
-    <ProjectReference Include="..\..\src\DotNetCore.CAP\DotNetCore.CAP.csproj" />
   </ItemGroup> 
 
 </Project>

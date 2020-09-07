@@ -23,13 +23,6 @@ namespace Sample.ConsoleApp
 
                     cfg.Pattern = DotNetCore.CAP.NetMQPattern.PubSub;
                 });
-                //x.UseRabbitMQ(cfg =>
-                //{
-                //    cfg.HostName = "172.17.124.92";
-                //    cfg.UserName = "guest";
-                //    cfg.Password = "guest";
-                //});
-                x.UseDashboard();
             });
 
             container.AddSingleton<EventSubscriber>();

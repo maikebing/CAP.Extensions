@@ -12,11 +12,11 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static CapOptions UseLiteDBStorage(this CapOptions options)
         {
-            return options.UseLiteDBStorage(options => options.ConnectionString =$"{System.Reflection.Assembly.GetEntryAssembly().GetName().Name}.db");
+            return options.UseLiteDBStorage(opt => opt.ConnectionString =$"{System.Reflection.Assembly.GetEntryAssembly().GetName().Name}.db");
         }
         public static CapOptions UseLiteDBStorage(this CapOptions options, string connectionString)
         {
-            return options.UseLiteDBStorage(options => options.ConnectionString = connectionString);
+            return options.UseLiteDBStorage(opt => opt.ConnectionString = connectionString);
         }
         public static CapOptions UseLiteDBStorage(this CapOptions options, Action<LiteDBOptions> configure)
         {

@@ -9,14 +9,17 @@
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\DotNetCore.CAP.ZeroMQ.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;CS1591</NoWarn>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+    <Authors>maikebing</Authors>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" Version="3.1.0" />
     <PackageReference Include="NetMQ" Version="4.0.1.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DotNetCore.CAP\DotNetCore.CAP.csproj" />
   </ItemGroup>
 
 </Project>
