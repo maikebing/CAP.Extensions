@@ -9,11 +9,24 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>cap_litedb.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="DotNetCore.CAP" Version="3.1.0" />
     <PackageReference Include="LiteDB" Version="5.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\cap_litedb.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -15,11 +15,24 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
     <RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>cap_zeromq.png</PackageIcon>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="DotNetCore.CAP" Version="3.1.0" />
     <PackageReference Include="NetMQ" Version="4.0.1.4" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\docs\cap_zeromq.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
