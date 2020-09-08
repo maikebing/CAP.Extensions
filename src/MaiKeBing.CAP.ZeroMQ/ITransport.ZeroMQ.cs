@@ -1,6 +1,7 @@
 ﻿// Copyright (c) .NET Core Community. All rights reserved.
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
+using DotNetCore.CAP;
 using DotNetCore.CAP.Internal;
 using DotNetCore.CAP.Messages;
 using DotNetCore.CAP.Transport;
@@ -10,7 +11,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotNetCore.CAP.ZeroMQ
+namespace MaiKeBing.CAP.ZeroMQ
 {
     internal sealed class ZeroMQTransport : ITransport
     {

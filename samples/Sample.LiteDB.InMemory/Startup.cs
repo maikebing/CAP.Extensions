@@ -1,4 +1,4 @@
-﻿using DotNetCore.CAP.LiteDB;
+﻿using MaiKeBing.CAP.LiteDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Savorboard.CAP.InMemoryMessageQueue;

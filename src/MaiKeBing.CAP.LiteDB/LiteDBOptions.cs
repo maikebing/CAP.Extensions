@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotNetCore.CAP.LiteDB
+namespace MaiKeBing.CAP.LiteDB
 {
     public class LiteDBOptions
     {

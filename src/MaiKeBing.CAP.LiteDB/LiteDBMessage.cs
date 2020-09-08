@@ -7,7 +7,7 @@ using DotNetCore.CAP.Persistence;
 using Newtonsoft.Json;
 using System;
 
-namespace DotNetCore.CAP.LiteDB
+namespace MaiKeBing.CAP.LiteDB
 {
     public class LiteDBMessage 
     {

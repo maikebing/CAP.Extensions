@@ -3,10 +3,10 @@
 
 // ReSharper disable once CheckNamespace
 
-using DotNetCore.CAP.ZeroMQ;
+using MaiKeBing.CAP.ZeroMQ;
 
 // ReSharper disable once CheckNamespace
-namespace DotNetCore.CAP
+namespace MaiKeBing.CAP
 {
     /// <summary>
     /// Which set of NetMQSocket to use.

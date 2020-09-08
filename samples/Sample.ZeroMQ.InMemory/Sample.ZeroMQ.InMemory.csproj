@@ -12,7 +12,7 @@
   </ItemGroup>
    
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.ZeroMQ\DotNetCore.CAP.ZeroMQ.csproj" />
+    <ProjectReference Include="..\..\src\MaiKeBing.CAP.ZeroMQ\MaiKeBing.CAP.ZeroMQ.csproj" />
   </ItemGroup> 
 
 </Project>

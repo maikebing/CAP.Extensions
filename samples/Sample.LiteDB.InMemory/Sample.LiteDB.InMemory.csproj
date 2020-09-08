@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotNetCore.CAP.LiteDB\DotNetCore.CAP.LiteDB.csproj" />
+    <ProjectReference Include="..\..\src\MaiKeBing.CAP.LiteDB\MaiKeBing.CAP.LiteDB.csproj" />
   </ItemGroup> 
 
 </Project>

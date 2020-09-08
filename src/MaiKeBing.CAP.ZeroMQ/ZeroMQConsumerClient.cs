@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace DotNetCore.CAP.ZeroMQ
+namespace MaiKeBing.CAP.ZeroMQ
 {
     internal sealed class ZeroMQConsumerClient : IConsumerClient
     {
@@ -70,7 +70,7 @@ namespace DotNetCore.CAP.ZeroMQ
                     string header = buffer[1].ConvertToString();
                     var body = buffer[2].ToByteArray();
                     var _header = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(header);
-                    _header.Add(Messages.Headers.Group, _queueName);
+                    _header.Add(DotNetCore.CAP.Messages.Headers.Group, _queueName);
                     var message = new TransportMessage(_header, body);
                     OnMessageReceived?.Invoke(_sub, message);
                 }

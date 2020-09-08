@@ -3,7 +3,7 @@
 
 using NetMQ;
 
-namespace DotNetCore.CAP.ZeroMQ
+namespace MaiKeBing.CAP.ZeroMQ
 {
     public interface IConnectionChannelPool
     {

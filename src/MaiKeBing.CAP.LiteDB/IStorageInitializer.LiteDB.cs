@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DotNetCore.CAP.Persistence;
 
-namespace DotNetCore.CAP.LiteDB
+namespace MaiKeBing.CAP.LiteDB
 {
     internal class LiteDBStorageInitializer : IStorageInitializer
     {

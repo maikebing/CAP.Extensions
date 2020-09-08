@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DotNetCore.CAP;
 using DotNetCore.CAP.Internal;
 using DotNetCore.CAP.Messages;
 using DotNetCore.CAP.Monitoring;
@@ -15,7 +16,7 @@ using DotNetCore.CAP.Serialization;
 using LiteDB;
 using Microsoft.Extensions.Options;
 
-namespace DotNetCore.CAP.LiteDB
+namespace MaiKeBing.CAP.LiteDB
 {
     internal class LiteDBStorage : IDataStorage
     {

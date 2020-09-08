@@ -12,7 +12,7 @@ using DotNetCore.CAP.Monitoring;
 using DotNetCore.CAP.Persistence;
 using LiteDB;
 
-namespace DotNetCore.CAP.LiteDB
+namespace MaiKeBing.CAP.LiteDB
 {
     internal class LiteDBMonitoringApi : IMonitoringApi
     {

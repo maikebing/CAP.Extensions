@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DotNetCore.CAP;
+using MaiKeBing.CAP;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Sample.ZeroMQ.InMemory.Controllers
