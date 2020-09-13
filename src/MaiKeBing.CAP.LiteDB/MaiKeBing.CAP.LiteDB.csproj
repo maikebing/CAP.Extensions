@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>MaiKeBing.CAP.InMemoryStorage</AssemblyName>
-    <PackageTags>$(PackageTags);InMemory</PackageTags>
+    <PackageTags>LiteDB;dotnetcore;CAP;EventBus;MicroService;Persistence;Storage</PackageTags>
     <Authors>maikebing</Authors>
     <Version>1.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

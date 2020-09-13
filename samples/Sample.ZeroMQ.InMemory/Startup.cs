@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using MaiKeBing.HostedService.ZeroMQ;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.ZeroMQ.InMemory;
 using System;
@@ -9,8 +10,11 @@ namespace Sample.ZeroMQ.InMemory
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHostedService<ZeroMQService>();
-            
+            services.AddZeroMQService(x =>
+            {
+                x.SendAddress = "tcp://127.0.0.1:5556";
+                x.ReceiveAddress = "tcp://127.0.0.1:5557";
+            });
             services.AddCap(x =>
             {
                 x.UseInMemoryStorage();
@@ -22,15 +26,8 @@ namespace Sample.ZeroMQ.InMemory
                     cfg.Pattern = MaiKeBing.CAP.NetMQPattern.PushPull;
 
                 });
-                //x.UseRabbitMQ(cfg =>
-                //{
-                //    cfg.HostName = "172.17.124.92";
-                //    cfg.UserName = "guest";
-                //    cfg.Password = "guest";
-                //});
                 x.UseDashboard();
             });
-
             services.AddControllers();
         }
 

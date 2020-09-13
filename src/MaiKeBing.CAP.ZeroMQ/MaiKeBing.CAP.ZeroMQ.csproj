@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>MaiKeBing.CAP.ZeroMQ</AssemblyName>
-    <PackageTags>$(PackageTags);ZeroMQ;NetMQ</PackageTags>
+    <PackageTags>;ZeroMQ;NetMQ;dotnetcore;CAP;EventBus;MicroService</PackageTags>
   </PropertyGroup>
   
   <PropertyGroup>

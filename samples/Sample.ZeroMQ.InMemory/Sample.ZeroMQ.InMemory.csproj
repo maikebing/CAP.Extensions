@@ -13,6 +13,7 @@
    
   <ItemGroup>
     <ProjectReference Include="..\..\src\MaiKeBing.CAP.ZeroMQ\MaiKeBing.CAP.ZeroMQ.csproj" />
+    <ProjectReference Include="..\..\src\MaiKeBing.HostedService.ZeroMQ\MaiKeBing.HostedService.ZeroMQ.csproj" />
   </ItemGroup> 
 
 </Project>
