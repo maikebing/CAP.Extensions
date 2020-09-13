@@ -8,7 +8,7 @@
 
 CAP.Extensions 是 CAP的扩展版本库， 提供了针对CAP的两个组件：
 
-- MaiKeBing.CAP.ZeroMQ [![DotNetCore.CAP.ZeroMQ](https://img.shields.io/nuget/v/MaiKeBing.CAP.ZeroMQ.svg)](https://www.nuget.org/packages/MaiKeBing.CAP.ZeroMQ/)
+- MaiKeBing.CAP.ZeroMQ [![MaiKeBing.CAP.ZeroMQ](https://img.shields.io/nuget/v/MaiKeBing.CAP.ZeroMQ.svg)](https://www.nuget.org/packages/MaiKeBing.CAP.ZeroMQ/)
   
 
   ![MaiKeBing.CAP.ZeroMQ](docs/cap_zeromq.png)
@@ -20,7 +20,7 @@ CAP.Extensions 是 CAP的扩展版本库， 提供了针对CAP的两个组件：
 
    
 
-- MaiKeBing.CAP.LiteDB  [![DotNetCore.CAP.LiteDB](https://img.shields.io/nuget/v/MaiKeBing.CAP.LiteDB.svg)](https://www.nuget.org/packages/MaiKeBing.CAP.LiteDB/)
+- MaiKeBing.CAP.LiteDB  [![MaiKeBing.CAP.LiteDB](https://img.shields.io/nuget/v/MaiKeBing.CAP.LiteDB.svg)](https://www.nuget.org/packages/MaiKeBing.CAP.LiteDB/)
 
     ![MaiKeBing.CAP.LiteDB](docs/cap_litedb.png)
    
@@ -28,6 +28,14 @@ CAP.Extensions 是 CAP的扩展版本库， 提供了针对CAP的两个组件：
    
    `Install-Package MaiKeBing.CAP.LiteDB`
 
+
+- MaiKeBing.HostedService.ZeroMQ  [![MaiKeBing.HostedService.ZeroMQ](https://img.shields.io/nuget/v/MaiKeBing.HostedService.ZeroMQ.svg)](https://www.nuget.org/packages/MaiKeBing.HostedService.ZeroMQ/)
+
+    ![MaiKeBing.HostedService.ZeroMQ](docs/zeromq.jpg)
+   
+  将ZeroMQ作为HostedService 运行， 通过配置可以实现Pub-Sub、Push-Pull 两种分发模式
+   
+   `Install-Package MaiKeBing.HostedService.ZeroMQ`
 
 
 ## Contribute

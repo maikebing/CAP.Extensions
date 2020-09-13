@@ -12,6 +12,7 @@
 	  <PackageIcon>zeromq.jpg</PackageIcon>
 	  <Copyright>Copyright maikebing 2020</Copyright>
 	  <Description>Hosted ZeroMQ as service</Description>
+	  <PackageTags>HostedService;ZeroMQ;</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
