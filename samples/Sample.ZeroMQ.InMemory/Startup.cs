@@ -1,5 +1,6 @@
 ﻿using MaiKeBing.HostedService.ZeroMQ;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Sample.ZeroMQ.InMemory;
 using System;
@@ -8,13 +9,14 @@ namespace Sample.ZeroMQ.InMemory
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public IConfiguration Configuration { get; private set; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddZeroMQService(x =>
-            {
-                x.SendAddress = "tcp://127.0.0.1:5556";
-                x.ReceiveAddress = "tcp://127.0.0.1:5557";
-            });
+            services.AddHostedZeroMQ(Configuration);
             services.AddCap(x =>
             {
                 x.UseInMemoryStorage();
