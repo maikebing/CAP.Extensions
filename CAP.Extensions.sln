@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaiKeBing.HostedService.ZeroMQ", "src\MaiKeBing.HostedService.ZeroMQ\MaiKeBing.HostedService.ZeroMQ.csproj", "{2194F64B-D48B-42EF-9ED0-CCB77E5B708F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAP.Extensions", "src\CAP.Extensions\CAP.Extensions.csproj", "{1A2A7B13-ADBB-4342-8A22-F44FBBC38153}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{2194F64B-D48B-42EF-9ED0-CCB77E5B708F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2194F64B-D48B-42EF-9ED0-CCB77E5B708F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2194F64B-D48B-42EF-9ED0-CCB77E5B708F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2A7B13-ADBB-4342-8A22-F44FBBC38153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2A7B13-ADBB-4342-8A22-F44FBBC38153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2A7B13-ADBB-4342-8A22-F44FBBC38153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2A7B13-ADBB-4342-8A22-F44FBBC38153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{5CD5590B-2C85-495A-B477-5F3D8BDF3129} = {21D34F62-236C-411A-ADA4-6C2F3E1FCDB0}
 		{08CA1622-F684-4FFA-ADE9-CE746468516F} = {21D34F62-236C-411A-ADA4-6C2F3E1FCDB0}
 		{2194F64B-D48B-42EF-9ED0-CCB77E5B708F} = {21D34F62-236C-411A-ADA4-6C2F3E1FCDB0}
+		{1A2A7B13-ADBB-4342-8A22-F44FBBC38153} = {21D34F62-236C-411A-ADA4-6C2F3E1FCDB0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {416A1A17-816A-418A-8B92-7FE4AF6BD6F6}

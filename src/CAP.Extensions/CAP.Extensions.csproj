@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
+    <PackageIcon>cap.png</PackageIcon>
+    <RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>git;cap;Extensions</PackageTags>
+    <PackageReleaseNotes>旨在为CAP提供尽可能的扩展函数</PackageReleaseNotes>
+    <Description>旨在为CAP提供尽可能的扩展函数</Description>
+    <Version>1.0.1</Version>
+    <Authors>maikebing</Authors>
+    <Copyright>Copyright 2020 maikebing</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" Version="3.1.1" />
+    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\docs\cap.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
