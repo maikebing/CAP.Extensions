@@ -8,6 +8,19 @@
 
 CAP.Extensions 是 CAP的扩展版本库， 提供了针对CAP的两个组件：
 
+- CAP.Extensions[![CAP.Extensions](https://img.shields.io/nuget/v/CAP.Extensions.svg)](https://www.nuget.org/packages/CAP.Extensions/)
+  
+
+  ![CAP.Extensions](docs/cap.png)
+  
+
+  CAP.Extensions 是针对CAP的扩展库， 目前包含少量的扩展， 后期逐步扩充， 当然， 这是基于我本人工作和项目中。 这些扩展得益于  https://github.com/IoTSharp/IoTSharp   
+
+   `Install-Package CAP.Extensions`  
+
+   
+
+
 - MaiKeBing.CAP.ZeroMQ [![MaiKeBing.CAP.ZeroMQ](https://img.shields.io/nuget/v/MaiKeBing.CAP.ZeroMQ.svg)](https://www.nuget.org/packages/MaiKeBing.CAP.ZeroMQ/)
   
 
