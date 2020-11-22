@@ -3,13 +3,22 @@
   <PropertyGroup>
 	  <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
 	  <AssemblyName>Rennix09.CAP.Oracle</AssemblyName>
-	  <PackageTags>$(PackageTags);Oracle</PackageTags>
+	  <PackageTags>CAP;Oracle</PackageTags>
 	  <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
 	<PropertyGroup>
 		<DocumentationFile>bin\$(Configuration)\netstandard2.0\Rennix09.CAP.Oracle.xml</DocumentationFile>
 		<NoWarn>1701;1702;1705;CS1591</NoWarn>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>1.0.1</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>Rennix09</Authors>
+		<Company>Rennix09</Company>
+		<PackageProjectUrl>https://github.com/maikebing/CAP.Extensions/tree/master/src/Rennix09.CAP.Oracle</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReleaseNotes>https://github.com/maikebing/CAP.Extensions/tree/master/src/Rennix09.CAP.Oracle</PackageReleaseNotes>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />

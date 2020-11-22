@@ -20,6 +20,12 @@ CAP.Extensions 是 CAP的扩展版本库， 提供了针对CAP的两个组件：
 
    
 
+- Rennix09.CAP.Oracle [![Rennix09.CAP.Oracle](https://img.shields.io/nuget/v/Rennix09.CAP.Oracle.svg)](https://www.nuget.org/packages/Rennix09.CAP.Oracle/)
+  
+
+   `Install-Package Rennix09.CAP.Oracle`  
+
+
 
 - MaiKeBing.CAP.ZeroMQ [![MaiKeBing.CAP.ZeroMQ](https://img.shields.io/nuget/v/MaiKeBing.CAP.ZeroMQ.svg)](https://www.nuget.org/packages/MaiKeBing.CAP.ZeroMQ/)
   
