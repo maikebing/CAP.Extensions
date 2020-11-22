@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See License.txt in the project root for license information.
 
 using System;
-using DotNetCore.CAP.Oracle;
+using Rennix09.CAP.Oracle;
 using DotNetCore.CAP.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

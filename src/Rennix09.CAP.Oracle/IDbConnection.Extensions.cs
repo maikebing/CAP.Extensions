@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Data;
 
-namespace DotNetCore.CAP.Oracle
+namespace Rennix09.CAP.Oracle
 {
     internal static class DbConnectionExtensions
     {

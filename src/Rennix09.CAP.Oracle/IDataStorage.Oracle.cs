@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
+using DotNetCore.CAP;
 using DotNetCore.CAP.Internal;
 using DotNetCore.CAP.Messages;
 using DotNetCore.CAP.Monitoring;
@@ -15,7 +16,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 
-namespace DotNetCore.CAP.Oracle
+namespace Rennix09.CAP.Oracle
 {
     public class OracleDataStorage : IDataStorage
     {
@@ -205,7 +206,7 @@ namespace DotNetCore.CAP.Oracle
                 return messages;
             }, new OracleParameter(":P_FourMinAgo", fourMinAgo));
 
-            return result;
+            return await Task.FromResult(result);
         }
     }
 }

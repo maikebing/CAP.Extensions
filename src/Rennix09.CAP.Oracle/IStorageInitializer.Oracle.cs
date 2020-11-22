@@ -3,12 +3,13 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using DotNetCore.CAP;
 using DotNetCore.CAP.Persistence;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 
-namespace DotNetCore.CAP.Oracle
+namespace Rennix09.CAP.Oracle
 {
     public class OracleStorageInitializer : IStorageInitializer
     {

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DotNetCore.CAP;
 using DotNetCore.CAP.Internal;
 using DotNetCore.CAP.Messages;
 using DotNetCore.CAP.Monitoring;
@@ -12,7 +13,7 @@ using DotNetCore.CAP.Persistence;
 using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 
-namespace DotNetCore.CAP.Oracle
+namespace Rennix09.CAP.Oracle
 {
     internal class OracleMonitoringApi : IMonitoringApi
     {
@@ -290,7 +291,7 @@ namespace DotNetCore.CAP.Oracle
                 return message;
             });
 
-            return mediumMessage;
+            return await Task.FromResult(mediumMessage);
         }
     }
 }
