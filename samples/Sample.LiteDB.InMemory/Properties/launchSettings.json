@@ -18,6 +18,7 @@
     "Sample.LiteDB.InMemory": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "without/transaction",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

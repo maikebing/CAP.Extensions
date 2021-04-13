@@ -4,7 +4,6 @@
 using DotNetCore.CAP.Internal;
 using DotNetCore.CAP.Messages;
 using DotNetCore.CAP.Persistence;
-using Newtonsoft.Json;
 using System;
 
 namespace MaiKeBing.CAP.LiteDB

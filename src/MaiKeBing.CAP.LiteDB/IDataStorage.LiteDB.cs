@@ -62,7 +62,7 @@ namespace MaiKeBing.CAP.LiteDB
             {
                 DbId = content.GetId(),
                 Origin = content,
-                Content = StringSerializer.Serialize(content),
+                Content = System.Text.Json.JsonSerializer.Serialize(content),
                 Added = DateTime.Now,
                 ExpiresAt = null,
                 Retries = 0
@@ -114,7 +114,7 @@ namespace MaiKeBing.CAP.LiteDB
                  Id = mdMessage.DbId,
                 Group = group,
                 Name = name,
-                Content = StringSerializer.Serialize(mdMessage.Origin),
+                Content = System.Text.Json.JsonSerializer.Serialize(mdMessage.Origin),
                 Retries = mdMessage.Retries,
                 Added = mdMessage.Added,
                 ExpiresAt = mdMessage.ExpiresAt,
@@ -150,7 +150,7 @@ namespace MaiKeBing.CAP.LiteDB
 
             foreach (var message in ret)
             {
-                message.Origin = StringSerializer.DeSerialize(message.Content);
+                message.Origin =  System.Text.Json.JsonSerializer.Deserialize<Message>(message.Content);
             }
 
             return Task.FromResult(ret);
@@ -167,7 +167,7 @@ namespace MaiKeBing.CAP.LiteDB
 
             foreach (var message in ret)
             {
-                message.Origin = StringSerializer.DeSerialize(message.Content);
+                message.Origin = System.Text.Json.JsonSerializer.Deserialize<Message>(message.Content);
             }
 
             return Task.FromResult(ret);

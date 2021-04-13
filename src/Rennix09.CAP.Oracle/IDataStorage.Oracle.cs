@@ -50,7 +50,7 @@ namespace Rennix09.CAP.Oracle
             {
                 DbId = content.GetId(),
                 Origin = content,
-                Content = StringSerializer.Serialize(content),
+                Content = System.Text.Json.JsonSerializer.Serialize(content),
                 Added = DateTime.Now,
                 ExpiresAt = null,
                 Retries = 0
@@ -123,7 +123,7 @@ namespace Rennix09.CAP.Oracle
                 new OracleParameter(":P_Id", mdMessage.DbId),
                 new OracleParameter(":P_Name", name),
                 new OracleParameter(":P_Group", group),
-                new OracleParameter(":P_Content", StringSerializer.Serialize(mdMessage.Origin)),
+                new OracleParameter(":P_Content", System.Text.Json.JsonSerializer.Serialize(mdMessage.Origin)),
                 new OracleParameter(":P_Retries", mdMessage.Retries),
                 new OracleParameter(":P_Added", mdMessage.Added),
                 new OracleParameter(":P_ExpiresAt", mdMessage.ExpiresAt.HasValue ? (object) mdMessage.ExpiresAt.Value : DBNull.Value),
@@ -197,7 +197,7 @@ namespace Rennix09.CAP.Oracle
                     messages.Add(new MediumMessage
                     {
                         DbId = reader.GetInt64(0).ToString(),
-                        Origin = StringSerializer.DeSerialize(reader.GetString(1)),
+                        Origin = System.Text.Json.JsonSerializer.Deserialize<Message>(reader.GetString(1)),
                         Retries = reader.GetInt32(2),
                         Added = reader.GetDateTime(3)
                     });

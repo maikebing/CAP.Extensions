@@ -38,7 +38,7 @@ namespace MaiKeBing.CAP.ZeroMQ
                 channel = _connectionChannelPool.Rent();
                 NetMQMessage msg = new NetMQMessage();
                 msg.Append(message.GetName());
-                msg.Append(Newtonsoft.Json.JsonConvert.SerializeObject(message.Headers.ToDictionary(x => x.Key, x => (object)x.Value)));
+                msg.Append(System.Text.Json.JsonSerializer.Serialize(message.Headers.ToDictionary(x => x.Key, x => (object)x.Value)));
                 msg.Append(message.Body);
                 channel.SendMultipartMessage(msg);
                 _logger.LogDebug($"ZeroMQ topic message [{message.GetName()}] has been published.");

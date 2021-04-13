@@ -8,6 +8,7 @@ using NetMQ;
 using NetMQ.Sockets;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using System.Threading;
 
 namespace MaiKeBing.CAP.ZeroMQ
@@ -69,7 +70,7 @@ namespace MaiKeBing.CAP.ZeroMQ
                     topic = buffer[0].ConvertToString();
                     string header = buffer[1].ConvertToString();
                     var body = buffer[2].ToByteArray();
-                    var _header = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(header);
+                    var _header =System.Text.Json.JsonSerializer.Deserialize <Dictionary<string, string>>(header);
                     _header.Add(DotNetCore.CAP.Messages.Headers.Group, _queueName);
                     var message = new TransportMessage(_header, body);
                     OnMessageReceived?.Invoke(_sub, message);
