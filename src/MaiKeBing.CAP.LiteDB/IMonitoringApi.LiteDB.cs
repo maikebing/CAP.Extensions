@@ -48,7 +48,7 @@ namespace MaiKeBing.CAP.LiteDB
             return GetHourlyTimelineStats(type, nameof(StatusName.Succeeded));
         }
 
-        public IList<MessageDto> Messages(MessageQueryDto queryDto)
+        public PagedQueryResult<MessageDto> Messages(MessageQueryDto queryDto)
         {
             if (queryDto.MessageType == MessageType.Publish)
             {
@@ -71,17 +71,25 @@ namespace MaiKeBing.CAP.LiteDB
                 var offset = queryDto.CurrentPage * queryDto.PageSize;
                 var size = queryDto.PageSize;
 
-                return expression.Skip(offset).Take(size).Select(x => new MessageDto()
+                var allItems = expression.Select(x => new MessageDto()
                 {
                     Added = x.Added,
                     Version = "N/A",
                     Content = x.Content,
                     ExpiresAt = x.ExpiresAt,
-                    Id = long.Parse(x.Id),
+                    Id = x.Id,
                     Name = x.Name,
                     Retries = x.Retries,
                     StatusName = x.StatusName.ToString()
-                }).ToList();
+                });
+
+                return new PagedQueryResult<MessageDto>()
+                {
+                    Items = allItems.Skip(offset).Take(size).ToList(),
+                    PageIndex = queryDto.CurrentPage,
+                    PageSize = queryDto.PageSize,
+                    Totals = allItems.Count()
+                };
             }
             else
             {
@@ -110,18 +118,26 @@ namespace MaiKeBing.CAP.LiteDB
                 var offset = queryDto.CurrentPage * queryDto.PageSize;
                 var size = queryDto.PageSize;
 
-                return expression.Skip(offset).Take(size).Select(x => new MessageDto()
+                var allItems = expression.Select(x => new MessageDto()
                 {
                     Added = x.Added,
                     Group = x.Group,
                     Version = "N/A",
                     Content = x.Content,
                     ExpiresAt = x.ExpiresAt,
-                    Id = long.Parse(x.Id),
+                    Id = x.Id,
                     Name = x.Name,
                     Retries = x.Retries,
                     StatusName = x.StatusName.ToString()
-                }).ToList();
+                });
+
+                return new PagedQueryResult<MessageDto>()
+                {
+                    Items = allItems.Skip(offset).Take(size).ToList(),
+                    PageIndex = queryDto.CurrentPage,
+                    PageSize = queryDto.PageSize,
+                    Totals = allItems.Count()
+                };
             }
         }
 
