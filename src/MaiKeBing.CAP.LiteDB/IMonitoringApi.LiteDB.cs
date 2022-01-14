@@ -77,7 +77,7 @@ namespace MaiKeBing.CAP.LiteDB
                     Version = "N/A",
                     Content = x.Content,
                     ExpiresAt = x.ExpiresAt,
-                    Id = long.Parse(x.Id),
+                    Id = x.Id,
                     Name = x.Name,
                     Retries = x.Retries,
                     StatusName = x.StatusName.ToString()
@@ -117,7 +117,7 @@ namespace MaiKeBing.CAP.LiteDB
                     Version = "N/A",
                     Content = x.Content,
                     ExpiresAt = x.ExpiresAt,
-                    Id = long.Parse(x.Id),
+                    Id = x.Id,
                     Name = x.Name,
                     Retries = x.Retries,
                     StatusName = x.StatusName.ToString()
@@ -189,6 +189,11 @@ namespace MaiKeBing.CAP.LiteDB
                 result.Add(keyMaps.ElementAt(i).Value, value);
             }
             return result;
+        }
+
+        PagedQueryResult<MessageDto> IMonitoringApi.Messages(MessageQueryDto queryDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

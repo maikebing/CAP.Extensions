@@ -1,36 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>MaiKeBing.CAP.InMemoryStorage</AssemblyName>
-    <PackageTags>LiteDB;dotnetcore;CAP;EventBus;MicroService;Persistence;Storage</PackageTags>
-    <Authors>maikebing</Authors>
-    <Version>1.0.1</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>cap_litedb.png</PackageIcon>
-    <PackageId>MaiKeBing.CAP.LiteDB</PackageId>
-    <Product>MaiKeBing.CAP.LiteDB</Product>
-    <Description>LiteDB是一个小型的.NET平台开源的NoSQL类型的轻量级文件数据库。特点是小和快，dll文件只有200K大小，而且支持LINQ和命令行操作，数据库是一个单一文件，类似Sqlite。为CAP存储了本地文件的NoSQL存储方式， 示例请参见 Sample.LiteDB.InMemory</Description>
-    <Copyright>© MaiKeBing 2020</Copyright>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+		<AssemblyName>MaiKeBing.CAP.InMemoryStorage</AssemblyName>
+		<PackageTags>LiteDB;dotnetcore;CAP;EventBus;MicroService;Persistence;Storage</PackageTags>
+		<Authors>maikebing</Authors>
+		<Version>1.0.1</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/maikebing/CAP.Extensions</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>cap_litedb.png</PackageIcon>
+		<PackageId>MaiKeBing.CAP.LiteDB</PackageId>
+		<Product>MaiKeBing.CAP.LiteDB</Product>
+		<Description>LiteDB是一个小型的.NET平台开源的NoSQL类型的轻量级文件数据库。特点是小和快，dll文件只有200K大小，而且支持LINQ和命令行操作，数据库是一个单一文件，类似Sqlite。为CAP存储了本地文件的NoSQL存储方式， 示例请参见 Sample.LiteDB.InMemory</Description>
+		<Copyright>© MaiKeBing 2020</Copyright>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFramework)'=='net5.0'">
+		<PackageReference Include="DotNetCore.CAP" Version="5.*" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DotNetCore.CAP" Version="5.0.1" />
-    <PackageReference Include="LiteDB" Version="5.0.10" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+		<PackageReference Include="DotNetCore.CAP" Version="6.*" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="LiteDB" Version="5.0.10" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\docs\cap_litedb.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\..\docs\cap_litedb.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

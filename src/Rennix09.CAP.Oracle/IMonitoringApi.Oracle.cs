@@ -136,7 +136,7 @@ namespace Rennix09.CAP.Oracle
                     var index = 0;
                     messages.Add(new MessageDto
                     {
-                        Id = reader.GetInt64(index++),
+                        Id = reader.GetString(index++),
                         Version = reader.GetString(index++),
                         Name = reader.GetString(index++),
                         Group = queryDto.MessageType == MessageType.Subscribe ? reader.GetString(index++) : default,
@@ -292,6 +292,11 @@ namespace Rennix09.CAP.Oracle
             });
 
             return await Task.FromResult(mediumMessage);
+        }
+
+        PagedQueryResult<MessageDto> IMonitoringApi.Messages(MessageQueryDto queryDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
