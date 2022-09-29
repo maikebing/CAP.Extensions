@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/maikebing/CAP.Extensions</PackageProjectUrl>
@@ -15,16 +15,11 @@
 		<Authors>maikebing</Authors>
 		<Copyright>Copyright 2020 maikebing</Copyright>
 	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFramework)'=='net5.0'">
-		<PackageReference Include="DotNetCore.CAP" Version="5.*" />
-		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="5.*" />
-	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+	<ItemGroup>
 		<PackageReference Include="DotNetCore.CAP" Version="6.*" />
 		<PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="6.*" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<None Include="..\..\docs\cap.png">
 			<Pack>True</Pack>

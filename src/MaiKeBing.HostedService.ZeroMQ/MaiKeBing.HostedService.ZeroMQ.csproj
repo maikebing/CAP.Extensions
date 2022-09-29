@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+		<TargetFramework>netstandard2.1</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Version>1.0.1</Version>
 		<Authors>maikebing</Authors>
@@ -19,15 +19,7 @@
 		<PackageReference Include="NetMQ" Version="4.0.1.6" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'=='net5.0'">
-		<PackageReference Include="Microsoft.Extensions.Configuration" Version="5.*" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.*" />
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.*" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.*" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="5.*" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.*" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.*" />
 		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.*" />
