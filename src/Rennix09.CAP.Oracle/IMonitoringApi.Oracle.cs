@@ -10,6 +10,7 @@ using DotNetCore.CAP.Internal;
 using DotNetCore.CAP.Messages;
 using DotNetCore.CAP.Monitoring;
 using DotNetCore.CAP.Persistence;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Options;
 using Oracle.ManagedDataAccess.Client;
 
@@ -28,7 +29,7 @@ namespace Rennix09.CAP.Oracle
             _recName = initializer.GetReceivedTableName();
         }
 
-        public StatisticsDto GetStatistics()
+        public Task< StatisticsDto> GetStatisticsAsync()
         {
             var sql = $@"
                 SELECT
@@ -62,22 +63,22 @@ namespace Rennix09.CAP.Oracle
                 return statisticsDto;
             });
 
-            return statistics;
+            return Task.FromResult( statistics);
         }
 
-        public IDictionary<DateTime, int> HourlyFailedJobs(MessageType type)
+        public Task<IDictionary<DateTime, int>> HourlyFailedJobs(MessageType type)
         {
             var tableName = type == MessageType.Publish ? _pubName : _recName;
-            return GetHourlyTimelineStats(tableName, nameof(StatusName.Failed));
+            return  Task.FromResult( GetHourlyTimelineStats(tableName, nameof(StatusName.Failed)));
         }
 
-        public IDictionary<DateTime, int> HourlySucceededJobs(MessageType type)
+        public Task<IDictionary<DateTime, int>> HourlySucceededJobs(MessageType type)
         {
             var tableName = type == MessageType.Publish ? _pubName : _recName;
-            return GetHourlyTimelineStats(tableName, nameof(StatusName.Succeeded));
+            return Task.FromResult(GetHourlyTimelineStats(tableName, nameof(StatusName.Succeeded)));
         }
 
-        public IList<MessageDto> Messages(MessageQueryDto queryDto)
+        public Task<PagedQueryResult<MessageDto>> Messages(MessageQueryDto queryDto)
         {
             var tableName = queryDto.MessageType == MessageType.Publish ? _pubName : _recName;
 
@@ -127,7 +128,7 @@ namespace Rennix09.CAP.Oracle
             });
 
             using var connection = new OracleConnection(_options.ConnectionString);
-            return connection.ExecuteReader(sqlQuery, reader =>
+            var result= connection.ExecuteReader(sqlQuery, reader =>
             {
                 var messages = new List<MessageDto>();
 
@@ -150,6 +151,12 @@ namespace Rennix09.CAP.Oracle
 
                 return messages;
             }, sqlParams.ToArray());
+            var pqr = new PagedQueryResult<MessageDto>();
+            pqr.Totals = result.Count;
+            pqr.Items = result;
+            pqr.PageSize = queryDto.PageSize;
+            pqr.PageIndex = queryDto.CurrentPage;
+            return Task.FromResult(pqr);
         }
 
         /// <summary>
@@ -165,24 +172,24 @@ namespace Rennix09.CAP.Oracle
             return str[0].ToString().ToUpper() + str.Substring(1);
         }
 
-        public int PublishedFailedCount()
+        public ValueTask<int> PublishedFailedCount()
         {
-            return GetNumberOfMessage(_pubName, nameof(StatusName.Failed));
+            return ValueTask.FromResult(GetNumberOfMessage(_pubName, nameof(StatusName.Failed)));
         }
 
-        public int PublishedSucceededCount()
+        public ValueTask<int> PublishedSucceededCount()
         {
-            return GetNumberOfMessage(_pubName, nameof(StatusName.Succeeded));
+            return ValueTask.FromResult(GetNumberOfMessage(_pubName, nameof(StatusName.Succeeded)));
         }
 
-        public int ReceivedFailedCount()
+        public ValueTask<int> ReceivedFailedCount()
         {
-            return GetNumberOfMessage(_recName, nameof(StatusName.Failed));
+            return ValueTask.FromResult(GetNumberOfMessage(_recName, nameof(StatusName.Failed)));
         }
 
-        public int ReceivedSucceededCount()
+        public ValueTask< int> ReceivedSucceededCount()
         {
-            return GetNumberOfMessage(_recName, nameof(StatusName.Succeeded));
+            return ValueTask.FromResult( GetNumberOfMessage(_recName, nameof(StatusName.Succeeded)));
         }
 
         private int GetNumberOfMessage(string tableName, string statusName)
@@ -192,7 +199,7 @@ namespace Rennix09.CAP.Oracle
             return connection.ExecuteScalar<int>(sqlQuery, new OracleParameter(":P_StatusName", statusName));
         }
 
-        private Dictionary<DateTime, int> GetHourlyTimelineStats(string tableName, string statusName)
+        private IDictionary<DateTime, int> GetHourlyTimelineStats(string tableName, string statusName)
         {
             var endDate = DateTime.Now;
             var dates = new List<DateTime>();
@@ -207,7 +214,7 @@ namespace Rennix09.CAP.Oracle
             return GetTimelineStats(tableName, statusName, keyMaps);
         }
 
-        private Dictionary<DateTime, int> GetTimelineStats(
+        private IDictionary<DateTime, int> GetTimelineStats(
             string tableName,
             string statusName,
             IDictionary<string, DateTime> keyMaps)
@@ -267,9 +274,12 @@ namespace Rennix09.CAP.Oracle
 
         public async Task<MediumMessage> GetReceivedMessageAsync(long id) => await GetMessageAsync(_recName, id);
 
+
         private async Task<MediumMessage> GetMessageAsync(string tableName, long id)
         {
             var sql = $@"SELECT ""Id"" as ""DbId"", ""Content"",""Added"",""ExpiresAt"",""Retries"" FROM ""{tableName}"" WHERE ""Id""={id};";
+
+
 
             using var connection = new OracleConnection(_options.ConnectionString);
             var mediumMessage = connection.ExecuteReader(sql, reader =>
@@ -294,9 +304,68 @@ namespace Rennix09.CAP.Oracle
             return await Task.FromResult(mediumMessage);
         }
 
-        PagedQueryResult<MessageDto> IMonitoringApi.Messages(MessageQueryDto queryDto)
+      public  Task<PagedQueryResult<MessageDto>>  GetMessagesAsync(MessageQueryDto queryDto)
         {
-            throw new NotImplementedException();
+
+            var tableName = queryDto.MessageType == MessageType.Publish ? _pubName : _recName;
+            var where = string.Empty;
+            if (!string.IsNullOrEmpty(queryDto.StatusName)) where += " and StatusName=:P_StatusName";
+
+            if (!string.IsNullOrEmpty(queryDto.Name)) where += " and Name=:P_Name";
+
+            if (!string.IsNullOrEmpty(queryDto.Group)) where += " and `Group`=:P_Group";
+
+            if (!string.IsNullOrEmpty(queryDto.Content)) where += " and Content like CONCAT('%',:P_Content,'%')";
+
+            var sqlQuery =
+                $"select * from `{tableName}` where 1=1 {where} order by Added desc limit :P_Limit offset :P_Offset";
+
+            object[] sqlParams =
+            {
+            new OracleParameter(":P_StatusName", queryDto.StatusName ?? string.Empty),
+            new OracleParameter(":P_Group", queryDto.Group ?? string.Empty),
+            new OracleParameter(":P_Name", queryDto.Name ?? string.Empty),
+            new OracleParameter(":P_Content", $"%{queryDto.Content}%"),
+            new OracleParameter(":P_Offset", queryDto.CurrentPage * queryDto.PageSize),
+            new OracleParameter(":P_Limit", queryDto.PageSize)
+        };
+
+            var connection = new OracleConnection(_options.ConnectionString);
+            using var _ = connection;
+
+            var count =  connection.ExecuteScalar<int>($"select count(1) from `{tableName}` where 1=1 {where}",
+                new OracleParameter(":P_StatusName", queryDto.StatusName ?? string.Empty),
+                new OracleParameter(":P_Group", queryDto.Group ?? string.Empty),
+                new OracleParameter(":P_Name", queryDto.Name ?? string.Empty),
+                new OracleParameter(":P_Content", $"%{queryDto.Content}%"));
+
+            var items = connection.ExecuteReader(sqlQuery, reader =>
+            {
+                var messages = new List<MessageDto>();
+
+                while (reader.Read())
+                {
+                    var index = 0;
+                    messages.Add(new MessageDto
+                    {
+                        Id = reader.GetInt64(index++).ToString(),
+                        Version = reader.GetString(index++),
+                        Name = reader.GetString(index++),
+                        Group = queryDto.MessageType == MessageType.Subscribe ? reader.GetString(index++) : default,
+                        Content = reader.GetString(index++),
+                        Retries = reader.GetInt32(index++),
+                        Added = reader.GetDateTime(index++),
+                        ExpiresAt = reader.IsDBNull(index++) ? null : reader.GetDateTime(index - 1),
+                        StatusName = reader.GetString(index)
+                    });
+                }
+
+                return messages;
+            }, sqlParams: sqlParams);
+
+            return Task.FromResult( new PagedQueryResult<MessageDto>
+            { Items = items, PageIndex = queryDto.CurrentPage, PageSize = queryDto.PageSize, Totals = count });
         }
+
     }
 }
